@@ -1,0 +1,127 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500&display=swap');
+
+:root{
+    --card-1: #E28525;
+    --card-2: #016972;
+    --card-3: #00403F;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: auto;
+}
+
+.card{
+    display: flex;
+    height: 500px;
+    width: 100%;  
+    box-shadow: 2px 4px 10px 0 rgba(0, 0, 0, 0.3); 
+    border-radius: 10px;
+}
+
+.card>*>h1{
+    text-transform: uppercase;
+}
+
+.card>*>p{
+    color: #ebebeb;
+    letter-spacing: 1.2px;
+}
+
+.card-1, .card-2, .card-3{
+    position: relative;
+    padding: 40px 80px 40px 50px;
+    width: 300px;
+    color: #FFF;
+    box-shadow:  0 0px 10px rgb(0 0 0 / 0.4)
+}
+
+.card-1{
+    z-index: 10;
+    border-radius: 10px 0 0 10px;
+    background-color: var(--card-1);
+}
+
+.card-2{
+    z-index: 8;
+    background-color: var(--card-2);
+}
+
+.card-3{
+    z-index: 6;
+    border-radius: 0 10px 10px 0;
+    background-color: var(--card-3);
+}
+
+.card-1>h1, .card-2>h1, .card-3>h1{
+    margin: 40px 0;
+}
+
+.card-1>button, .card-2>button, .card-3>button{
+    cursor: pointer;
+    font-size: 15px;
+    position: absolute;
+    left: 50%;
+    bottom: 3rem;
+    transform: translate(-80%, 0);
+    padding: 15px 30px;
+    border-radius: 25px;
+    border: none;
+    background-color: #FFF;
+    color: inherit;
+}
+
+.card-1>button{
+    color: var(--card-1);
+}
+.card-2>button{
+    color: var(--card-2);
+}
+.card-3>button{
+    color: var(--card-3);
+}
+.attribution {
+    z-index: 100;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    font-size: 11px;
+    text-align: center;
+}
+.attribution a {
+    color: hsl(228, 45%, 44%);
+}
+
+@media screen and (max-width:768px){
+    .card{
+        flex-direction: column;
+    }
+    .card-1, .card-2, .card-3{
+        min-height: 500px;
+    }
+    .card-1{
+        border-radius: 10px 10px 0 0;
+    }
+    .card-3{
+        border-radius: 0 0 10px 10px;
+    }
+    .container{
+        bottom: 20px;
+    }
+    .attribution{
+        position: relative;
+        bottom: 0;
+    }
+}
+
