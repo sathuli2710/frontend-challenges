@@ -12,21 +12,25 @@
   box-sizing: border-box;
   font-family: 'Barlow Condensed', sans-serif;
 }
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
 
-.container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    height: auto;
+.app{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .card{
-    display: flex;
-    height: 500px;
-    width: 100%;  
+    display: flex; 
     box-shadow: 2px 4px 10px 0 rgba(0, 0, 0, 0.3); 
     border-radius: 10px;
+    margin-bottom: 20px;
 }
 
 .card>*>h1{
@@ -41,6 +45,7 @@
 .card-1, .card-2, .card-3{
     position: relative;
     padding: 40px 80px 40px 50px;
+    height: 500px;
     width: 300px;
     color: #FFF;
     box-shadow:  0 0px 10px rgb(0 0 0 / 0.4)
@@ -91,11 +96,6 @@
     color: var(--card-3);
 }
 .attribution {
-    z-index: 100;
-    position: absolute;
-    bottom: 10px;
-    left: 50%;
-    transform: translate(-50%, 0);
     font-size: 11px;
     text-align: center;
 }
@@ -104,8 +104,16 @@
 }
 
 @media screen and (max-width:768px){
+    body{
+        height: 100%;
+    }
+    .app{
+        transform: translate(0, 0);
+    }
     .card{
+        margin: 10% 0;
         flex-direction: column;
+        flex-grow: 1;
     }
     .card-1, .card-2, .card-3{
         min-height: 500px;
@@ -116,12 +124,8 @@
     .card-3{
         border-radius: 0 0 10px 10px;
     }
-    .container{
-        bottom: 20px;
-    }
     .attribution{
-        position: relative;
-        bottom: 0;
+        margin: 10px 0;
     }
 }
 
