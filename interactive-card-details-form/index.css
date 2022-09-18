@@ -22,7 +22,8 @@
 }
 
 .left {
-  width: 100%;
+  position: relative;
+  min-width: 400px;
   background: linear-gradient(to bottom right, hsl(278, 68%, 11%) 40%, #c96a6d 80%, hsl(278, 68%, 11%));
 }
 
@@ -34,8 +35,11 @@
 }
 
 .card-front{
+  position: absolute;
+  top: 30%;
+  left: 60%;
   background-image: linear-gradient(to bottom right, hsl(249, 99%, 64%) 30%, #c96a6d, hsl(249, 99%, 64%));
-  transform: translate(60%, 60%);
+  /* transform: translate(60%, 60%); */
   padding: 25px;
   color: #FFF;
 }
@@ -76,8 +80,11 @@
 }
 
 .card-back{
+  position: absolute;
+  top: 60%;
+  left: 85%;
   background-color: var(--Light-grayish-violet);
-  transform: translate(90%, 80%);
+  /* transform: translate(90%, 80%); */
 }
 
 .card-back-strip{
@@ -161,6 +168,7 @@
 .right {
   background-color: #fff;
   height: 100%;
+  min-width: 900px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -209,7 +217,14 @@ input::placeholder {
   color: var(--Light-grayish-violet);
 }
 
-button{
+.error{
+  display: none;
+  color: var(--error);
+  font-weight: bolder;
+  font-size: 8px;
+}
+
+#submit, #continue{
   cursor: pointer;
   margin-top: 30px;
   width: 100%;
@@ -219,6 +234,53 @@ button{
   text-transform: uppercase;
   background-color: var(--Very-dark-violet);
   color: #FFF;
+}
+
+#submit:disabled{
+  background-color: var(--Light-grayish-violet);
+  color: var(--Dark-grayish-violet) 
+}
+
+.thank-you-container{
+  display: none;
+}
+
+.thank-you{
+  display: flex;
+  min-width: 40%;
+  transform: translate(20%, 0%);
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.thank-you>.tick-circle{
+  height: 80px;
+  width: 80px;
+  border-radius: 50%;
+  background-image: var(--gradient);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tick-circle>div{
+  display: inline-block;
+  transform: rotate(45deg);
+  height: 25px;
+  width: 12px;
+  border-bottom: 3px solid #FFF;
+  border-right: 3px solid #FFF;
+}
+
+.thank-you>h1{
+  text-transform: uppercase;
+  font-weight: lighter;
+  margin: 20px 0
+}
+
+.thank-you>p{
+  color: var(--Dark-grayish-violet)
 }
 
 .attribution {

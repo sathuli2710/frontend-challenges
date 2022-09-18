@@ -32,7 +32,12 @@
           <div class="card-front-number">0000 0000 0000 0000</div>
           <div class="card-front-detail">
             <div class="card-front-name">Jane Aldeher</div>
-            <div class="card-front-exp"><span class="card-front-month">00</span>/<span class="card-front-year">00</span></div>
+            <div class="card-front-exp">
+              <span class="card-front-month">00</span>/<span
+                class="card-front-year"
+                >00</span
+              >
+            </div>
           </div>
         </div>
         <div class="card-back card">
@@ -60,36 +65,82 @@
           </div>
         </div>
       </div>
-      <div class="right">
+      <div class="right thank-you-container">
+        <div class="thank-you">
+          <div class="tick-circle">
+            <div></div>
+          </div>
+          <h1>Thank You!</h1>
+          <p>We've added your card details</p>
+          <input type="submit" id="continue" value="Continue" onclick="continueForm()"></input>
+        </div>
+      </div>
+      <div class="right card-form">
         <form class="form">
           <div class="name">
             <label for="card-name">Cardholder Name</label>
-            <input type="text" id="card-name" placeholder="e.g.  Jane Appleseed" oninput="cardNameChange()"/>
+            <input
+              type="text"
+              id="card-name"
+              placeholder="e.g.  Jane Appleseed"
+              oninput="cardNameChange(this)"
+              required
+            />
+            <span class="error" id="name-error">*Wrong format, letters only</span>
           </div>
           <div class="card-number">
-            <label for="card-number">Card Number</label>
+            <label for="card-number" value="0000 0000 0000 0000"
+              >Card Number</label
+            >
             <input
               type="text"
               id="card-number"
               placeholder="e.g. 0000 0000 0000 0000"
-              oninput="cardNumberChange()"
+              oninput="cardNumberChange(this)"
               value=""
+              maxlength = "16"
+              required
             />
+            <span class="error" id="number-error">*Wrong format, only numbers</span>
           </div>
           <div class="exp-cvc">
             <div class="exp">
               <label>Exp. Date(MM/YY)</label>
               <div class="month-year">
-                <input type="text" id="card-month" placeholder="MM" oninput="cardMonthChange()"/>
-                <input type="text" id="card-year" placeholder="YY" oninput="cardYearChange()"/>
+                <input
+                  type="text"
+                  id="card-month"
+                  placeholder="MM"
+                  oninput="cardMonthChange(this)"
+                  maxlength = "2"
+                  required
+                />
+                <input
+                  type="text"
+                  id="card-year"
+                  placeholder="YY"
+                  oninput="cardYearChange(this)"
+                  maxlength = "2"
+                  required
+                />
               </div>
+              <span class="error" id="exp-error">*Please enter correct month and year</span>
             </div>
             <div class="cvc">
               <label for="card-cvc">Cvc</label>
-              <input type="text" id="card-cvc" placeholder="e.g. 123" oninput="cardCvcChange()"/>
+              <input
+                type="text"
+                id="card-cvc"
+                placeholder="e.g. 123"
+                oninput="cardCvcChange(this)"
+                maxlength = "3"
+                required
+              />
+              <span class="error" id="cvc-error">*Please enter 3-digit cvc number</span>
             </div>
+            
           </div>
-          <button type="submit">Confirm</button>
+          <input type="submit" id="submit" value="Confirm" onclick="submitCard()"></input>
         </form>
       </div>
     </div>
@@ -97,7 +148,7 @@
       Challenge by
       <a href="https://www.frontendmentor.io?ref=challenge" target="_blank"
         >Frontend Mentor</a
-      >. Coded by <a href="#">Your Name Here</a>.
+      >. Coded by <a href="#">Abul</a>.
     </div>
 
     <!-- Completed state start -->
