@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import { ReactComponent as SidebarBg } from "../assets/images/bg-sidebar-desktop.svg";
 import StepsSelector from "./StepsSelector";
 
-const SideBar = ({ setStep }) => {
-  const [activeTab, setActiveTab] = useState(1);
+const SideBar = ({ setStep, activeTab, setActiveTab = () => {} }) => {
   const steps = [
     { stepNumber: 1, stepName: "Step 1", title: "Your Info" },
     { stepNumber: 2, stepName: "Step 2", title: "Select Plan" },
@@ -21,6 +20,7 @@ const SideBar = ({ setStep }) => {
         <div className="flex flex-col gap-6">
           {steps.map((item, idx) => (
             <StepsSelector
+              key={item.stepNumber}
               {...item}
               isActive={idx + 1 === activeTab ? true : false}
               setActiveTab={setActiveTab}

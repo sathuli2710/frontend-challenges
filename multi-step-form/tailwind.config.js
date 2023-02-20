@@ -15,8 +15,13 @@ module.exports = {
         alabaster: "hsl(231, 100%, 99%)",
       },
       fontFamily: {
-        sans: ["Custom Ubuntu"]
-      }
+        sans: ["Custom Ubuntu"],
+      },
+      fontWeight: {
+        400: 400,
+        500: 500,
+        700: 700,
+      },
     },
   },
   plugins: [],
