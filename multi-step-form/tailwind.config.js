@@ -22,6 +22,10 @@ module.exports = {
         500: 500,
         700: 700,
       },
+      screens: {
+        sm: {min: "375px", max: "767px"},
+        "min-md": { min: "768px" },
+      },
     },
   },
   plugins: [],

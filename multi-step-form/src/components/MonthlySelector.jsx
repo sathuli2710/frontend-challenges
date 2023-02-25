@@ -3,7 +3,13 @@ import React from "react";
 const MonthlySelector = ({ isMonth = false, setIsMonth = () => {} }) => {
   return (
     <div className="w-full h-[50px] bg-magnolia rounded-lg flex justify-center items-center gap-3">
-      <span className="text-[16px] font-[700] text-marine-blue">Monthly</span>
+      <span
+        className={`${
+          isMonth ? "text-marine-blue" : "text-cool-grey"
+        } text-[16px] font-[700]`}
+      >
+        Monthly
+      </span>
       <div
         className={`w-[40px] h-[20px] rounded-xl bg-marine-blue px-1 flex items-center`}
         onClick={() => setIsMonth(!isMonth)}
@@ -14,7 +20,13 @@ const MonthlySelector = ({ isMonth = false, setIsMonth = () => {} }) => {
           }`}
         ></span>
       </div>
-      <span className="text-[16px] font-[700] text-marine-blue">yearly</span>
+      <span
+        className={`${
+          isMonth ? "text-cool-grey" : "text-marine-blue"
+        } text-[16px] font-[700]`}
+      >
+        Yearly
+      </span>
     </div>
   );
 };

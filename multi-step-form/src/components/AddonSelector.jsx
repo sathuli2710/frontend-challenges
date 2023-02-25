@@ -25,11 +25,11 @@ const AddonSelector = ({
     <div
       className={`w-full border ${
         isActive ? "border-marine-blue bg-light-blue" : "border-light-grey"
-      } rounded-lg py-3 px-6 flex justify-between items-center`}
+      } rounded-lg py-3 px-6 sm:px-4 flex justify-between items-center`}
       id={addonId}
       onClick={handleClick}
     >
-      <div className="flex gap-6 justify-start items-center">
+      <div className="flex gap-6 justify-start items-center sm:gap-4">
         <span
           className={`w-[20px] h-[20px] rounded-sm ${
             isActive ? "bg-purplish-blue" : "border border-light-grey"
@@ -38,11 +38,13 @@ const AddonSelector = ({
           {isActive && <TickIcon />}
         </span>
         <div>
-          <p className="text-marine-blue font-700">{addonTitle}</p>
-          <p className="text-cool-grey">{addonDesc}</p>
+          <p className="text-marine-blue font-700 sm:text-[14px]">
+            {addonTitle}
+          </p>
+          <p className="text-cool-grey sm:text-[10px]">{addonDesc}</p>
         </div>
       </div>
-      <span className="text-purplish-blue">
+      <span className="text-purplish-blue sm:text-[12px]">
         +${addonPrice}/{isMonth ? "mo" : "yr"}
       </span>
     </div>

@@ -2,39 +2,30 @@ import React from "react";
 
 const StepOne = ({ formDetails, isFieldEmpty = {} }) => {
   const handleInput = (e) => {
-    switch (e.currenTarget.id) {
+    switch (e.target.id) {
       case "name":
-        e.target.value === ""
-          ? (isFieldEmpty.name = true)
-          : (isFieldEmpty.name = false);
-        formDetails.current.personalInfo.name = e.target.value;
+        formDetails.personalInfo.name = e.target.value;
         break;
       case "email":
-        e.target.value === ""
-          ? (isFieldEmpty.email = true)
-          : (isFieldEmpty.email = false);
-        formDetails.current.personalInfo.email = e.target.value;
+        formDetails.personalInfo.email = e.target.value;
         break;
       case "phone":
-        e.target.value === ""
-          ? (isFieldEmpty.phone = true)
-          : (isFieldEmpty.phone = false);
-        formDetails.current.personalInfo.phone = e.target.value;
+        formDetails.personalInfo.phone = e.target.value;
         break;
       default:
         console.log("Nothing");
     }
   };
 
-  const validateName = (name) => {
-    return name.test(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/);
-  };
-  const validateEmail = (email) => {
-    return email.test(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
-  };
-  const validatePhone = (phone) => {
-    return phone.test(/^(\+?\d{1,2}\s)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/);
-  };
+  // const validateName = (name) => {
+  //   return name.test(/^[a-zA-Z]+(([',. -][a-zA-Z ])?[a-zA-Z]*)*$/);
+  // };
+  // const validateEmail = (email) => {
+  //   return email.test(/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/);
+  // };
+  // const validatePhone = (phone) => {
+  //   return phone.test(/^(\+?\d{1,2}\s)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$/);
+  // };
 
   return (
     <div className="flex flex-col gap-4">
@@ -43,19 +34,21 @@ const StepOne = ({ formDetails, isFieldEmpty = {} }) => {
           <label className="text-marine-blue text-[14px] font-[500]">
             Name
           </label>
-          {isFieldEmpty.name && (
+          {/* {isError && formDetails.personalInfo.name === "" && (
             <span className="text-strawberry-red text-[14px] font-[500]">
               The field is required
             </span>
-          )}
+          )} */}
         </div>
         <input
           id="name"
           type="text"
           placeholder="e.g. Stephen King"
           className="text-marine-blue font-[700] border border-light-grey py-2 px-4 rounded-md focus:outline-none focus:border-purplish-blue"
-          defaultValue={formDetails.current.personalInfo.name}
+          defaultValue={formDetails.personalInfo.name}
           onChange={handleInput}
+          onInvalid={() => console.log("Hello")}
+          required
         />
       </div>
       <div className="flex flex-col gap-3">
@@ -63,11 +56,11 @@ const StepOne = ({ formDetails, isFieldEmpty = {} }) => {
           <label className="text-marine-blue text-[14px] font-[500]">
             Email Address
           </label>
-          {isFieldEmpty.email && (
+          {/* {isError && formDetails.personalInfo.email === "" && (
             <span className="text-strawberry-red text-[14px] font-[500]">
               The field is required
             </span>
-          )}
+          )} */}
         </div>
         <input
           id="email"
@@ -76,8 +69,10 @@ const StepOne = ({ formDetails, isFieldEmpty = {} }) => {
           className={`text-marine-blue font-[700] border ${
             isFieldEmpty.email ? "border-strawberry-red" : "border-light-grey"
           } py-2 px-4 rounded-md focus:outline-none focus:border-purplish-blue`}
-          defaultValue={formDetails.current.personalInfo.email}
+          defaultValue={formDetails.personalInfo.email}
           onChange={handleInput}
+          onInvalid={() => console.log("Hello")}
+          required
         />
       </div>
       <div className="flex flex-col gap-3">
@@ -85,19 +80,21 @@ const StepOne = ({ formDetails, isFieldEmpty = {} }) => {
           <label className="text-marine-blue text-[14px] font-[500]">
             Phone Number
           </label>
-          {isFieldEmpty.phone && (
+          {/* {isError && formDetails.personalInfo.phone === "" && (
             <span className="text-strawberry-red text-[14px] font-[500]">
               The field is required
             </span>
-          )}
+          )} */}
         </div>
         <input
           id="phone"
           type="text"
           placeholder="e.g. +1 234 567 890"
           className="text-marine-blue font-[700] border border-light-grey py-2 px-4 rounded-md focus:outline-none focus:border-purplish-blue"
-          defaultValue={formDetails.current.personalInfo.phone}
+          defaultValue={formDetails.personalInfo.phone}
           onChange={handleInput}
+          onInvalid={() => console.log("Hello")}
+          required
         />
       </div>
     </div>

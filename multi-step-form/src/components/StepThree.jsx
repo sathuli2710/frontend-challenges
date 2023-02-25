@@ -3,11 +3,11 @@ import AddonSelector from "./AddonSelector";
 import { addonsDetail } from "../constants/addonsDetail";
 
 const StepThree = ({ formDetails }) => {
-  const isMonth = formDetails.current.planInfo.isMonth;
-  const [activeAddons, setActiveAddons] = useState(formDetails.current.addOns);
+  const isMonth = formDetails.planInfo.isMonth;
+  const [activeAddons, setActiveAddons] = useState(formDetails.addOns);
   useEffect(() => {
-    formDetails.current.addOns = activeAddons;
-  }, [activeAddons]);
+    formDetails.addOns = activeAddons;
+  }, [activeAddons, formDetails]);
   return (
     <div className="flex flex-col gap-6">
       {addonsDetail.map((addon) => (

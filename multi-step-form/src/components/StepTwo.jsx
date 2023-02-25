@@ -4,18 +4,16 @@ import MonthlySelector from "./MonthlySelector";
 import { plansDetail } from "../constants/plansDetail";
 
 const StepTwo = ({ formDetails }) => {
-  const [isMonth, setIsMonth] = useState(formDetails.current.planInfo.isMonth);
-  const [activePlan, setActivePlan] = useState(
-    formDetails.current.planInfo.activePlan
-  );
-
+  const [isMonth, setIsMonth] = useState(formDetails.planInfo.isMonth);
+  const [activePlan, setActivePlan] = useState(formDetails.planInfo.activePlan);
   useEffect(() => {
-    formDetails.current.planInfo.isMonth = isMonth;
-    formDetails.current.planInfo.activePlan = activePlan;
-  }, [isMonth, activePlan]);
+    formDetails.planInfo.isMonth = isMonth;
+    formDetails.planInfo.activePlan = activePlan;
+  }, [isMonth, activePlan, formDetails]);
+
   return (
     <div>
-      <div className="grid grid-cols-3 gap-4 mb-8">
+      <div className="grid grid-cols-3 sm:flex sm:flex-col gap-4 mb-8">
         {plansDetail.map((plan) => (
           <PlanSelector
             key={plan?.id}

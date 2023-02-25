@@ -1,12 +1,12 @@
-import { useRef, useState } from "react";
+import { useState } from "react";
 import Card from "./components/Card";
 import Form from "./components/Form";
 import SideBar from "./components/SideBar";
 
 function App() {
-  const [step, setStep] = useState(1);
-  const [activeTab, setActiveTab] = useState(1);
-  const formDetails = useRef({
+  const [activeStep, setActiveStep] = useState(1);
+  const [isError, setError] = useState(false);
+  const formDetails = {
     personalInfo: {
       name: "",
       email: "",
@@ -17,22 +17,41 @@ function App() {
       activePlan: 1,
     },
     addOns: [],
-  });
+  };
   return (
-    <div className="max-w-screen h-screen bg-light-grey grid place-items-center">
-      <Card className="flex justify-start items-start gap-20">
+    <div className="w-screen h-screen sm:h-[750px] bg-light-grey min-md:grid min-md:place-items-center">
+      <Card className="flex sm:flex-col sm:justfy-center sm:items-center justify-start items-start gap-20 sm:hidden">
         <SideBar
-          setStep={setStep}
-          activeTab={activeTab}
-          setActiveTab={setActiveTab}
+          setActiveStep={setActiveStep}
+          activeStep={activeStep}
+          formDetails={formDetails}
+          setError={setError}
         />
         <Form
-          step={step}
-          setStep={setStep}
+          activeStep={activeStep}
+          setActiveStep={setActiveStep}
           formDetails={formDetails}
-          setActiveTab={setActiveTab}
+          isError={isError}
+          setError={setError}
         ></Form>
       </Card>
+      <div className="min-md:hidden">
+        <SideBar
+          setActiveStep={setActiveStep}
+          activeStep={activeStep}
+          formDetails={formDetails}
+          setError={setError}
+        />
+        <Card className="min-md:flex justify-start items-start gap-20 sm:absolute sm:top-[100px] sm:left-[20px]">
+          <Form
+            activeStep={activeStep}
+            setActiveStep={setActiveStep}
+            formDetails={formDetails}
+            isError={isError}
+            setError={setError}
+          ></Form>
+        </Card>
+      </div>
     </div>
   );
 }

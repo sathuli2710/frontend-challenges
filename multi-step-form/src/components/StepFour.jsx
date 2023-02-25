@@ -2,14 +2,14 @@ import React from "react";
 import { plansDetail } from "../constants/plansDetail";
 import { addonsDetail } from "../constants/addonsDetail";
 
-const StepFour = ({ formDetails, setActiveTab = () => {} }) => {
+const StepFour = ({ formDetails, setActiveStep = () => {} }) => {
   const activePlan = plansDetail.find(
-    (plan) => plan.id === formDetails.current.planInfo.activePlan
+    (plan) => plan.id === formDetails.planInfo.activePlan
   );
   const activeAddons = addonsDetail.filter((addon) =>
-    formDetails.current.addOns.includes(addon?.id)
+    formDetails.addOns.includes(addon?.id)
   );
-  const isMonth = formDetails.current.planInfo.isMonth;
+  const isMonth = formDetails.planInfo.isMonth;
   let totalPrice;
   const priceKey = isMonth ? "monthlyPrice" : "yearlyPrice";
   const activePlanPrice = activePlan[priceKey];
@@ -20,7 +20,7 @@ const StepFour = ({ formDetails, setActiveTab = () => {} }) => {
   totalPrice = activePlanPrice + activeAddonsPrice;
   return (
     <>
-      <div className="w-full py-5 px-6 bg-alabaster rounded-lg">
+      <div className="w-full py-5 px-6 bg-alabaster rounded-lg text-[12px]">
         <div className="flex justify-between items-center">
           <div>
             <p className="text-marine-blue font-[700]">
@@ -29,12 +29,12 @@ const StepFour = ({ formDetails, setActiveTab = () => {} }) => {
             </p>
             <p
               className="text-cool-grey hover:text-purplish-blue underline"
-              onClick={() => setActiveTab(2)}
+              onClick={() => setActiveStep(2)}
             >
               Change
             </p>
           </div>
-          <p className="text-[20px] text-marine-blue font-[700]">
+          <p className="text-[20px] sm:text-[14px] text-marine-blue font-[700]">
             ${isMonth ? activePlan.monthlyPrice : activePlan.yearlyPrice}/
             {isMonth ? "mo" : "yr"}
           </p>
@@ -56,7 +56,7 @@ const StepFour = ({ formDetails, setActiveTab = () => {} }) => {
         <span className="text-cool-grey">
           Total(per {isMonth ? "month" : "year"})
         </span>
-        <span className="text-purplish-blue text-[24px] font-[700]">
+        <span className="text-purplish-blue text-[24px] sm:text-[18px] font-[700]">
           +${totalPrice}/{isMonth ? "mo" : "yr"}
         </span>
       </div>
